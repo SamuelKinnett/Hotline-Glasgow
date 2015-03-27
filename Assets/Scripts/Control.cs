@@ -4,15 +4,18 @@ using System.Collections;
 public class Control : MonoBehaviour {
 
 	private Animator animator;
+	private Rigidbody2D physics;
+
 	public Camera camera;
 	public GameObject player;
+	public int speed;
 
-	bool isMoving;
+	public bool isMoving;
 
 	// Use this for initialization
 	void Start () {
 		animator = this.GetComponent<Animator>();
-		isMoving = false;
+		physics = this.GetComponent<Rigidbody2D>();
 	}
 	
 	// Update is called once per frame
@@ -20,22 +23,24 @@ public class Control : MonoBehaviour {
 
 		float inputX = Input.GetAxis("Horizontal");
 		float inputY = Input.GetAxis("Vertical");
-		Vector3 playerPos = player.transform.position;
+		physics.velocity = new Vector2(0, 0);
+		//Vector3 playerPos = player.transform.position;
 		
-		playerPos.x += inputX / 4;
-		playerPos.y += inputY / 4;
+		//playerPos.x += inputX / 4;
+		//playerPos.y += inputY / 4;
 
 		//Credit to robertbu on Stack Overflow
 		Vector3 pos = camera.WorldToScreenPoint(transform.position);
 		Vector3 dir = Input.mousePosition - pos;
 		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-		transform.rotation = Quaternion.AngleAxis(angle - 90, Vector3.forward);
+		transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
 
 		if(inputX != 0 || inputY != 0)
 			animator.SetBool("Moving", true);
 		else
 			animator.SetBool("Moving", false);
 
-		player.transform.position = playerPos;
+		//player.transform.position = playerPos;
+		physics.velocity = new Vector2(inputX, inputY) * speed;
 	}
 }
