@@ -4,6 +4,7 @@ using System.Collections;
 public class MoveCamera : MonoBehaviour {
 
 	public GameObject player;
+	public Camera camera;
 
 	public int levelWidth;
 
@@ -19,8 +20,14 @@ public class MoveCamera : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+		float viewMultiplier;
 
-		this.transform.position = player.transform.position;
+		if (Input.GetKey(KeyCode.LeftShift))
+			viewMultiplier = 0.5F;
+		else
+			viewMultiplier = 0.2F;
+
+		this.transform.position = Vector3.Lerp(player.transform.position, camera.ScreenToWorldPoint(new Vector3( Input.mousePosition.x, Input.mousePosition.y, 0)), viewMultiplier);
 
 		float distanceFromCentre = this.transform.position.x;
 		float rotationMultiplier = 7.5F / (levelWidth / 2);
