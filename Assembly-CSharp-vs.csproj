@@ -49,6 +49,8 @@
      <Compile Include="Assets\Scripts\BackgroundColourChanger.cs" />
      <Compile Include="Assets\Scripts\Control.cs" />
      <Compile Include="Assets\Scripts\MoveCamera.cs" />
+     <Compile Include="Assets\Scripts\PlayerLowerScript.cs" />
+     <Compile Include="Assets\Scripts\SplashScreenPlaceholder.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Temp/Unity5/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
