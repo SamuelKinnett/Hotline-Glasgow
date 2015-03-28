@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 4839cf32e329408478da8b3d6945cb48
+labels:
+- Player
 folderAsset: yes
 timeCreated: 1427484587
 licenseType: Free

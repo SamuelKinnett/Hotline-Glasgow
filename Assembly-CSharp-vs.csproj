@@ -46,10 +46,12 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\BackgroundColourChanger.cs" />
-     <Compile Include="Assets\Scripts\Control.cs" />
-     <Compile Include="Assets\Scripts\MoveCamera.cs" />
-     <Compile Include="Assets\Scripts\PlayerLowerScript.cs" />
+     <Compile Include="Assets\Scripts\AI\GoonController.cs" />
+     <Compile Include="Assets\Scripts\AI\GoonLowerControl.cs" />
+     <Compile Include="Assets\Scripts\Background\BackgroundColourChanger.cs" />
+     <Compile Include="Assets\Scripts\Camera\MoveCamera.cs" />
+     <Compile Include="Assets\Scripts\Player\Control.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerLowerScript.cs" />
      <Compile Include="Assets\Scripts\SplashScreenPlaceholder.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Temp/Unity5/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
