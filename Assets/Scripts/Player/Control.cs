@@ -10,6 +10,9 @@ public class Control : MonoBehaviour {
 	public GameObject player;
 	public int speed;
 
+	public GameObject enemyHit;
+	public GoonController goonController;
+
 	public bool isMoving;
 
 	// Use this for initialization
@@ -49,5 +52,25 @@ public class Control : MonoBehaviour {
 
 		//player.transform.position = playerPos;
 		physics.velocity = new Vector2(inputX, inputY) * speed;
+
+		if (Input.GetMouseButton(0))
+		{
+			RaycastHit2D hit; 
+			int layerMask = ~(1 << 10);
+
+			hit = Physics2D.Raycast(transform.position, camera.WorldToScreenPoint(Input.mousePosition) - transform.position, 2, layerMask);
+
+			Debug.Log(hit.point);
+			if (hit.collider != null && hit.collider.tag == "Enemy")
+			{
+				enemyHit = hit.transform.gameObject;
+				goonController = enemyHit.GetComponent<GoonController>();
+				goonController.Hit();
+			}
+			animator.SetBool("Punching", true);
+			//Add code for punching here
+		}
+		else
+			animator.SetBool("Punching", false);
 	}
 }
